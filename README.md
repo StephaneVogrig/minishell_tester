@@ -59,3 +59,16 @@ You can run them like any other separate test:
 ```sh
 ./tester os_specific
 ```
+
+# How to run Valgrind Tester
+# To run the valgrind tester you has to use the -c flags exemple of implementations :
+```c
+if (ac == 3 && ft_strcmp(av[1], "-c") == 0 && av[2])
+	start_parse(ft_strdup(av[2]), &env, &exit_code); -> start your parsing with argv[2] as if it was a readline input command
+else
+	parsing with readline
+```
+Run the `vtester` file to run all the tests for the mandatory part of the project and bonus
+```sh
+./vtester
+```

@@ -1,0 +1,67 @@
+#!/bin/bash
+
+MINISHELL_PATH="../minishell"
+
+# Run a specific test if the file name was specified
+# To run the valgrind tester you has to use the -c flags exemple of implementations :
+#
+#    if (ac == 3 && ft_strcmp(av[1], "-c") == 0 && av[2])
+#      start_parse(ft_strdup(av[2]), &env, &exit_code); -> start your parsing with argv[2] as if it was a readline input command
+#	 else
+#		parsing with readline
+if [[ $1 ]]; then
+	test_lists=(
+		$1
+	)
+else
+	test_lists=(
+		"redirects"
+		"pipes"
+		"builtins"
+		"extras"
+		"redirects_bonus"
+		"bonus"
+		"builtins_bonus"
+		"var"
+		"var_bonus"
+		"wildcards"
+		"syntax"
+		"syntax_bonus"
+	)
+fi
+
+if [[ $1 == "wildcards"  || $1 == "bonus" ]]; then
+	MINISHELL_PATH="../minishell"
+fi
+
+chmod 000 ./test_files/invalid_permission
+mkdir ./outfiles
+mkdir ./mini_outfiles
+mkdir ./bash_outfiles
+rm -rf ./logs/*
+
+clear;
+for testfile in ${test_lists[*]}; do
+
+	echo $testfile
+
+	while read teste; do
+		((i++))
+
+		mkdir ./logs/$testfile
+		rm -rf ./outfiles/*
+		rm -rf ./mini_outfiles/*
+
+		clear;
+		valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes --suppressions=../.vsupp --log-file=./logs/$testfile/log-$i ../minishell -c "$teste"
+		
+		printf "Test %3s: \n" $i
+		echo $teste
+	done < $testfile
+done
+
+chmod 666 ./test_files/invalid_permission
+
+rm -rf ./outfiles/*
+rm -rf ./bash_outfiles/*
+rm -rf ./mini_outfiles/*

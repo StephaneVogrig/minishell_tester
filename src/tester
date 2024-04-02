@@ -9,15 +9,23 @@ if [[ $1 ]]; then
 	)
 else
 	test_lists=(
-		"builtins"
-		"pipes"
 		"redirects"
+		"pipes"
+		"builtins"
 		"extras"
+		"redirects_bonus"
+		"bonus"
+		"builtins_bonus"
+		"var"
+		"var_bonus"
+		"wildcards"
+		"syntax"
+		"syntax_bonus"
 	)
 fi
 
 if [[ $1 == "wildcards"  || $1 == "bonus" ]]; then
-	MINISHELL_PATH="../minishell_bonus"
+	MINISHELL_PATH="../minishell"
 fi
 
 BOLD="\e[1m"
@@ -58,19 +66,20 @@ for testfile in ${test_lists[*]}; do
 	while read teste; do
 		((i++))
 
+
 		rm -rf ./outfiles/*
 		rm -rf ./mini_outfiles/*
 		MINI_OUTPUT=$(echo -e "$teste" | $MINISHELL_PATH 2> /dev/null | $REMOVE_COLORS | grep -vF "$PROMPT" | $REMOVE_EXIT )
 		MINI_OUTFILES=$(cp ./outfiles/* ./mini_outfiles &>/dev/null)
 		MINI_EXIT_CODE=$(echo -e "$MINISHELL_PATH\n$teste\necho \$?\nexit\n" | bash 2> /dev/null | $REMOVE_COLORS | grep -vF "$PROMPT" | $REMOVE_EXIT | tail -n 1)
-		MINI_ERROR_MSG=$(trap "" PIPE && echo "$teste" | $MINISHELL_PATH 2>&1 > /dev/null | grep -o '[^:]*$' )
+		MINI_ERROR_MSG=$(trap "" PIPE && echo "$teste" | $MINISHELL_PATH 2>&1 > /dev/null | grep -o '[^:]*$')
 
 		rm -rf ./outfiles/*
 		rm -rf ./bash_outfiles/*
 		BASH_OUTPUT=$(echo -e "$teste" | bash 2> /dev/null)
 		BASH_EXIT_CODE=$(echo $?)
 		BASH_OUTFILES=$(cp ./outfiles/* ./bash_outfiles &>/dev/null)
-		BASH_ERROR_MSG=$(trap "" PIPE && echo "$teste" | bash 2>&1 > /dev/null | grep -o '[^:]*$' | head -n1)
+		BASH_ERROR_MSG=$(trap "" PIPE && echo "$teste" | bash 2>&1 > /dev/null | grep -o '[^:]*$')
 
 		OUTFILES_DIFF=$(diff --brief ./mini_outfiles ./bash_outfiles)
 
