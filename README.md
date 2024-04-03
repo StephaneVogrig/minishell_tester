@@ -75,7 +75,12 @@ if (ac == 3 && ft_strcmp(av[1], "-c") == 0 && av[2])
 else
 	parsing with readline
 ```
-Run the `vtester` file to run all the tests for the mandatory part of the project and bonus
+Run the `vtester` file to run all the tests for the mandatory part of the project and bonus as below
 ```sh
 ./vtester
+./vtester mandatory
+./vtester wildcards
+./vtester bonus
+./tvester all
+./vtester syntax
 ```

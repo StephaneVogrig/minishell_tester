@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MINISHELL_PATH="../minishell"
+MINISHELL_PATH="../../minishell"
 
 # Run a specific test if the file name was specified
 # To run the valgrind tester you has to use the -c flags exemple of implementations :
@@ -69,22 +69,24 @@ chmod 000 ./test_files/invalid_permission
 mkdir ./outfiles
 mkdir ./mini_outfiles
 mkdir ./bash_outfiles
+mkdir ./logs
 rm -rf ./logs/*
+
 
 clear;
 for testfile in ${test_lists[*]}; do
 
 	echo $testfile
-
+	j=0
 	while read teste; do
 		((i++))
 
 		mkdir ./logs/$testfile
 		rm -rf ./outfiles/*
 		rm -rf ./mini_outfiles/*
-
+		((j+=1))
 		clear;
-		valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes --suppressions=../.vsupp --log-file=./logs/$testfile/log-$i ../minishell -c "$teste"
+		valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes --suppressions=../.vsupp --log-file=./logs/$testfile/log-$j $MINISHELL_PATH -c "$teste"
 		
 		printf "Test %3s: \n" $i
 		echo $teste
