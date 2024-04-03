@@ -65,7 +65,7 @@ You can run them like any other separate test:
 ./tester os_specific
 ```
 
-You can add tests by addings lines in files existing:
+You can add tests by addings lines in files existing or by creating a file and add it in the tester with test_files
 
 # How to run Valgrind Tester
 # To run the valgrind tester you has to use the -c flags exemple of implementations :
