@@ -13,7 +13,36 @@ if [[ $1 ]]; then
 	test_lists=(
 		$1
 	)
-else
+fi
+if [[ $1 == "mandatory" || !$1 ]]; then
+	test_lists=(
+		"redirects"
+		"pipes"
+		"builtins"
+		"extras"
+		"var"
+		"syntax"
+	)
+fi
+
+if [[ $1 == "bonus" ]]; then
+	test_lists=(
+		"redirects_bonus"
+		"bonus"
+		"builtins_bonus"
+		"var_bonus"
+		"wildcards"
+		"syntax_bonus"
+	)
+	touch '!'
+	touch ')'
+	touch '('
+	touch '*'
+	touch '8'
+	touch 'b'
+fi
+
+if [[ $1 == "all" ]]; then
 	test_lists=(
 		"redirects"
 		"pipes"
@@ -28,10 +57,12 @@ else
 		"syntax"
 		"syntax_bonus"
 	)
-fi
-
-if [[ $1 == "wildcards"  || $1 == "bonus" ]]; then
-	MINISHELL_PATH="../minishell"
+	touch '!'
+	touch ')'
+	touch '('
+	touch '*'
+	touch '8'
+	touch 'b'
 fi
 
 chmod 000 ./test_files/invalid_permission
@@ -61,7 +92,14 @@ for testfile in ${test_lists[*]}; do
 done
 
 chmod 666 ./test_files/invalid_permission
-
 rm -rf ./outfiles/*
 rm -rf ./bash_outfiles/*
 rm -rf ./mini_outfiles/*
+if [[ $1 == "all" || $1 == "bonus" ]]; then
+	rm '!'
+	rm ')'
+	rm '('
+	rm '*'
+	rm '8'
+	rm 'b'
+fi

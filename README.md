@@ -5,13 +5,16 @@ Clone the repo **inside** your minishell folder
 ```sh
 cd minishell
 git clone https://github.com/LucasKuhn/minishell_tester.git
-cd minishell_tester
+cd minishell_tester/src
 ```
 
 # How to run 
 Run the `tester` file to run all the tests for the mandatory part of the project
 ```sh
 ./tester
+./tester mandatory
+./tester bonus
+./tester all
 ```
 <p align="center">
   <img src="https://user-images.githubusercontent.com/26127185/175816613-324711eb-5511-4dea-84b6-3117d6b79d28.gif" width="720"/>
@@ -42,9 +45,11 @@ The tester does **not** test everything. We added some suggestions of manual tes
 # Bonus 
 We also have tests for the `wildcards` part of the bonus: 
 ```
-./tester wildcards 
+./tester wildcards
+./tester bonus
+./tester all
 ```
-* Make sure your executable is called `minishell_bonus`
+* Make sure your executable is called `minishell` or change the path in the tester line 3 `MINISHELL_PATH`
 
 # Extra tests
 We decided to leave out some tests from the mandatory part, things like syntax errors and OS specific code.
@@ -59,6 +64,8 @@ You can run them like any other separate test:
 ```sh
 ./tester os_specific
 ```
+
+You can add tests by addings lines in files existing:
 
 # How to run Valgrind Tester
 # To run the valgrind tester you has to use the -c flags exemple of implementations :
