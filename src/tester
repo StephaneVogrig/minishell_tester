@@ -1,8 +1,19 @@
 #!/bin/bash
 
-MINISHELL_PATH="../../minishell"
+MINISHELL_PATH="../minishell"
 
 # Run a specific test if the file name was specified
+
+if [ ! -x $MINISHELL_PATH ]; then
+	clear
+	printf "\e[31m$MINISHELL_PATH does not exist.\e[0m\n\n"
+	printf "\e[32mEnter the new path to minishell.\e[0m\n"
+	echo
+	read path
+	replace "$MINISHELL_PATH" "$path" -- ./tester
+	MINISHELL_PATH=$path
+fi
+
 if [[ $1 ]]; then
 	test_lists=(
 		$1

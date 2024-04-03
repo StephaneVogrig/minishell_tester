@@ -2,13 +2,15 @@
 
 MINISHELL_PATH="../../minishell"
 
-# Run a specific test if the file name was specified
-# To run the valgrind tester you has to use the -c flags exemple of implementations :
-#
-#    if (ac == 3 && ft_strcmp(av[1], "-c") == 0 && av[2])
-#      start_parse(ft_strdup(av[2]), &env, &exit_code); -> start your parsing with argv[2] as if it was a readline input command
-#	 else
-#		parsing with readline
+if [ ! -x $MINISHELL_PATH ]; then
+	echo $MINISHELL_PATH does not exist.
+	echo
+	echo "Enter the new path to minishell."
+	echo
+	read path
+	replace "$MINISHELL_PATH" "$path" -- ./vtester
+	MINISHELL_PATH=$path
+fi
 if [[ $1 ]]; then
 	test_lists=(
 		$1
