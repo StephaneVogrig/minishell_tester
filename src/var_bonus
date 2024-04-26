@@ -12,3 +12,13 @@ export test="cat "var"" && $test
 export test="export x="echo"" arg="op" arg+="xd" && $test && $x $arg
 export a && echo $a
 export lol=mdr && echo $lol "$lol" '$lol' $"" $'' $""lol $''lol "'lol'" '"lol"' "'"lol"'" '"'lol'"' "$" '$' $? $. "'$lol'" "test  $lol  test" 'test  $lol  test' "'test  $lol  test'" '"test  $lol  test"' '"''$lol''"' "'""'"'"''$PWD''"'
+export xd="./" df=$USER && export zd=export && $zd abc+=$xd$df
+(ls DOsuigaiudgasuo && echo $?) || echo $?
+(dsapohdsioahd || echo $?) && exit
+export xd="Makefile Makefile" && <$xd
+export xd="'Makefile' 'Makefile'" && <$xd
+export xd="'Makefile Makefile'" && echo $xd &&<$xd
+export xd="'Makefile'" && <$xd cat
+export xd="'Makefile'" && <"$xd" cat
+export xd="'Makefile'" && <'$xd' cat
+export xxd="export bc" && export ad="=abc hh+=dcdddddcd00000000000000" && $xdd$ad && echo $bc $hh

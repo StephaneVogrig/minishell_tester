@@ -15,3 +15,23 @@ README.md
 ls ''
 ls ""
 ls "mdr"
+/bin/ls
+/dsaihdhiosa
+dsadsadsa
+./dsadsa
+gkosgkpiodsjioj
+echo "xd" $USER "$USER" '''"'$USER'"'
+echo $ $ $
+/bin/usur
+/root/bin/no_perms
+./$PATH
+"./$USER"
+./'$USER'
+qwer || echo $?
+ls && echo $?
+''
+""
+'""'
+""''
+"$EMPTY"
+'$EMPTY'
