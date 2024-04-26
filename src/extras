@@ -27,8 +27,6 @@ echo $ $ $
 ./$PATH
 "./$USER"
 ./'$USER'
-qwer || echo $?
-ls && echo $?
 ''
 ""
 '""'

@@ -22,3 +22,5 @@ export xd="'Makefile'" && <$xd cat
 export xd="'Makefile'" && <"$xd" cat
 export xd="'Makefile'" && <'$xd' cat
 export xxd="export bc" && export ad="=abc hh+=dcdddddcd00000000000000" && $xdd$ad && echo $bc $hh
+qwer || echo $?
+ls && echo $?
