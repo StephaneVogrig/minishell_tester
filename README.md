@@ -14,6 +14,7 @@ Run the `tester` file to run all the tests for the mandatory part of the project
 ./tester
 ./tester mandatory
 ./tester bonus
+./tester not_required
 ./tester all
 ```
 <p align="center">

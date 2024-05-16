@@ -19,6 +19,9 @@ echo '$'
 echo $
 echo $?
 echo $?HELLO
+echo "           p"
+echo "           n"
+echo     "           n"       "            n"
 pwd
 pwd oi
 export hello
@@ -32,9 +35,6 @@ export =
 export 123
 export | sort | grep -v SHLVL | grep -v "declare -x _" | grep -v "PS.=" | wc -l
 export HELLO=123 A- WORLD=456
-echo "           p"
-echo "           n"
-echo     "           n"       "            n"
 unset HELLO=
 unset  A-
 unset  HELLO A- WORLD
@@ -47,6 +47,7 @@ unset SHELL
 cd $PWD
 cd $PWD hi 
 cd 123123
+cd wqerhqwer
 exit 123
 exit 298
 exit +100
@@ -72,9 +73,6 @@ exit -"                -100"
 exit -"                ---------100"
 exit hello
 exit 42 world
-env -qwerqwer
-env $PATH
-cd wqerhqwer
 exit 9223372036854775807 q
 exit 9223372036854775808 q
 exit -9223372036854775807 q

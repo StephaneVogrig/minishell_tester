@@ -1,0 +1,15 @@
+''
+""
+'""'
+""''
+"ls"
+'ls'
+ls ''
+ls ""
+ls "mdr"
+'ls' | ls
+'ls' | 'ls'
+"ls" | ls
+"ls" | "ls"
+"ls" | "cat"
+"aaa"
