@@ -13,3 +13,5 @@ ls "mdr"
 "ls" | "ls"
 "ls" | "cat"
 "aaa"
+echo ''
+echo ""

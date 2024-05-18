@@ -13,3 +13,10 @@ dsadsadsa
 gkosgkpiodsjioj
 /bin/usur
 /root/bin/no_perms
+/root
+.
+..
+./
+../
+.bad
+..bad
