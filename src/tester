@@ -133,6 +133,8 @@ for testfile in ${test_lists[*]}; do
 
 		OUTFILES_DIFF=$(diff --brief ./mini_outfiles ./bash_outfiles)
 
+		echo -e "$teste" | $MINISHELL_PATH 2> /dev/null 1>/dev/null
+		MINI_EXIT_CODE=$(echo $?)
 		printf $YELLOW
 		printf "Test %3s: " $i
 		if [[ "$MINI_OUTPUT" == "$BASH_OUTPUT" && "$MINI_EXIT_CODE" == "$BASH_EXIT_CODE" && -z "$OUTFILES_DIFF" ]]; then
