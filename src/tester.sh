@@ -119,10 +119,16 @@ for testfile in ${test_lists[*]}; do
 
 		rm -rf ./outfiles/*
 		rm -rf ./mini_outfiles/*
-		MINI_OUTPUT=$(echo -e "$teste" | $MINISHELL_PATH 2> /dev/null | $REMOVE_COLORS | grep -vF "$PROMPT" | $REMOVE_EXIT )
+		#MINI_OUTPUT=$(echo -e "$teste" | $MINISHELL_PATH 2> /dev/null | $REMOVE_COLORS | grep -vF "$PROMPT" | $REMOVE_EXIT )
+		#MINI_OUTFILES=$(cp ./outfiles/* ./mini_outfiles &>/dev/null)
+		#MINI_EXIT_CODE=$(echo -e "$MINISHELL_PATH\n$teste\necho \$?\nexit\n" | bash 2> /dev/null | $REMOVE_COLORS | grep -vF "$PROMPT" | $REMOVE_EXIT | tail -n 1)
+		#MINI_ERROR_MSG=$(trap "" PIPE && echo "$teste" | $MINISHELL_PATH 2>&1 > /dev/null | grep -o '[^:]*$')
+
+		MINI_OUTPUT=$(echo -e "$teste" | $MINISHELL_PATH 2> /dev/null)
+		MINI_EXIT_CODE=$(echo $?)
 		MINI_OUTFILES=$(cp ./outfiles/* ./mini_outfiles &>/dev/null)
-		MINI_EXIT_CODE=$(echo -e "$MINISHELL_PATH\n$teste\necho \$?\nexit\n" | bash 2> /dev/null | $REMOVE_COLORS | grep -vF "$PROMPT" | $REMOVE_EXIT | tail -n 1)
-		MINI_ERROR_MSG=$(trap "" PIPE && echo "$teste" | $MINISHELL_PATH 2>&1 > /dev/null | grep -o '[^:]*$')
+		MINI_ERROR_MSG=$(trap "" PIPE && echo "$teste" | $MINISHELL_PATH 2>&1 /dev/null | grep -o '[^:]*$')
+
 
 		rm -rf ./outfiles/*
 		rm -rf ./bash_outfiles/*
@@ -133,8 +139,6 @@ for testfile in ${test_lists[*]}; do
 
 		OUTFILES_DIFF=$(diff --brief ./mini_outfiles ./bash_outfiles)
 
-		echo -e "$teste" | $MINISHELL_PATH 2> /dev/null 1>/dev/null
-		MINI_EXIT_CODE=$(echo $?)
 		printf $YELLOW
 		printf "Test %3s: " $i
 		if [[ "$MINI_OUTPUT" == "$BASH_OUTPUT" && "$MINI_EXIT_CODE" == "$BASH_EXIT_CODE" && -z "$OUTFILES_DIFF" ]]; then

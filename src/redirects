@@ -199,3 +199,5 @@ ls | ls >./outfiles/outfile >> ./outfiles/outfile2 | cat -e
 ls | ls >>./outfiles/outfile > ./outfiles/outfile2 | cat -e
 ls | ls >>./outfiles/outfile >> ./outfiles/outfile2 | cat -e
 cat <minishell.h|ls
+echo <"./test_files/infile" <missing <"./test_files/infile" 
+cat <"./test_files/infile" <missing <"./test_files/infile" 

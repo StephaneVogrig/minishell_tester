@@ -103,3 +103,4 @@ echo $'HOME'$USER
 echo $'HOM'E$USER
 echo $'42$"HOME"'
 echo $'$'
+echo $?HELLO
