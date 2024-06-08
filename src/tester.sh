@@ -127,7 +127,7 @@ for testfile in ${test_lists[*]}; do
 		MINI_OUTPUT=$(echo -e "$teste" | $MINISHELL_PATH 2> /dev/null)
 		MINI_EXIT_CODE=$(echo $?)
 		MINI_OUTFILES=$(cp ./outfiles/* ./mini_outfiles &>/dev/null)
-		MINI_ERROR_MSG=$(trap "" PIPE && echo "$teste" | $MINISHELL_PATH 2>&1 /dev/null | grep -o '[^:]*$')
+		MINI_ERROR_MSG=$(trap "" PIPE && echo "$teste" | $MINISHELL_PATH 2>&1 > /dev/null | grep -o '[^:]*$')
 
 
 		rm -rf ./outfiles/*
